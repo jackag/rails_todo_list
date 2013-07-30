@@ -1,0 +1,15 @@
+<ul id="todo-list" class="unstyled">
+    <% @items.each do |item| %>
+      <li id="<%= item.id %>">
+        <span class="item"><%= item.done ? "<del>#{item.content}</del>" : item.content %></span>
+        <span class="pull-right">
+          <%= link_to item.done ? "Not done" : "Done", "#", :class => "btn done" %>
+          <%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </span>
+      </li>
+    <% end %>
+  </tbody>
+  
+</ul>
+
+<%= link_to 'New Item', new_item_path %>
