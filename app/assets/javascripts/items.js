@@ -1,18 +1,21 @@
 $(document).ready(function() {
-  $(".done").click(function(e) {
+  $(".check").click(function(e) {
     var item_id = $(this).parents('li').attr('id');
+    done = $(this).hasClass('done') ? 1 : 0
     $.ajax({
       type: "POST",
-      url: "/done",
-      data: { id: item_id },
+      dataType: "json",
+      url: "/items/" + item_id,
+      data: { _method:'PUT', item: { done: done } },
       }).done(function(data) {
-        if(data.status == 'done') {
-          $("#" + data.id + " a.done").text('Not done')
-          $("#" + data.id + " .item").wrapInner("<del>");
+      console.log(done);
+        if(done) {
+          $("#" + item_id + " a.done").text('Not done')
+          $("#" + item_id + " .item").wrapInner("<del>");
         }
         else {
-          $("#" + data.id + " a.done").text('Done')
-          $("#" + data.id + " .item").html(function(i, h) {
+          $("#" + item_id + " a.done").text('Done')
+          $("#" + item_id + " .item").html(function(i, h) {
             return h.replace("<del>", "");
           });
         }

@@ -1,9 +1,10 @@
 <ul id="todo-list" class="unstyled">
     <% @items.each do |item| %>
       <li id="<%= item.id %>">
-        <span class="item"><%= item.done ? "<del>#{item.content}</del>" : item.content %></span>
-        <span class="pull-right">
-          <%= link_to item.done ? "Not done" : "Done", "#", :class => "btn done" %>
+        <span class="item"><%= item.done %><%= item.done ? "<del>#{item.content}</del>" : item.content %></span>
+        <span class="pull-right" data-no-turbolink>
+          <% label = item.done ? "not_done" : "done" %>
+          <%= link_to label.humanize, "#", :class => "check btn #{label}" %>
           <%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
         </span>
       </li>
