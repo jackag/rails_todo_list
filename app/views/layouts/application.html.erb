@@ -15,22 +15,23 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <style>
+      body {
+        padding-top: 50px;
+      }
+    </style>
   </head>
 
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/">Todo list</a>
-        </div>
+      <div class="container">
+        <a class="navbar-brand" href="/">Todo list</a>
       </div>
     </div>
 
     <div class="container">
 
-      <h1><%= @title %></h1>
       <%= yield %>
 
     </div>

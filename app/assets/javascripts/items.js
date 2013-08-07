@@ -10,11 +10,11 @@ $(document).ready(function() {
       }).done(function(data) {
       console.log(done);
         if(done) {
-          $("#" + item_id + " a.done").text('Not done')
+          $("#" + item_id + " a.done").text('Not done').removeClass('done').addClass('not_done');
           $("#" + item_id + " .item").wrapInner("<del>");
         }
         else {
-          $("#" + item_id + " a.done").text('Done')
+          $("#" + item_id + " a.not_done").text('Done').removeClass('not_done').addClass('done');
           $("#" + item_id + " .item").html(function(i, h) {
             return h.replace("<del>", "");
           });
