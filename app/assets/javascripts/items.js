@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $(".check").click(function(e) {
     var item_id = $(this).parents('li').attr('id');
-    done = $(this).hasClass('done') ? 1 : 0
+    done = $(this).hasClass('done') ? 1 : 0;
     $.ajax({
       type: "POST",
       dataType: "json",
